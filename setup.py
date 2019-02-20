@@ -18,11 +18,15 @@
 import os
 import sys
 
-from setuptools import setup
+from pkg_resources import safe_version
+from setuptools import setup, find_namespace_packages
 
-sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
+VERSION = (1, 0, 'beta', 1)
 
-from autohooks.plugins.black import get_version
+
+def get_version():
+    str_version = '.'.join([str(v) for v in VERSION])
+    return safe_version(str_version)
 
 
 with open('README.md', 'r') as f:
@@ -37,8 +41,9 @@ setup(
     long_description=long_description,
     long_description_content_type='text/markdown',
     url='https://github.com/bjoernricks/autohooks-black',
-    packages=('autohooks.plugins.black'),
+    packages=find_namespace_packages(include=['autohooks.*']),
     python_requires='>=3.5',
+    install_requires=['autohooks', 'black'],
     classifiers=[
         # Full list: https://pypi.org/pypi?%3Aaction=list_classifiers
         'Development Status :: 3 - Alpha',

@@ -15,13 +15,4 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from .black import *
-
-from pkg_resources import safe_version
-
-VERSION = (1, 0, 'beta', 1)
-
-
-def get_version():
-    str_version = '.'.join([str(v) for v in VERSION])
-    return safe_version(str_version)
+from .black import precommit
