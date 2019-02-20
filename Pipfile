@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 black = "*"
+autohooks = "*"
 
 [dev-packages]
 pylint = "*"
