@@ -29,7 +29,7 @@ with open('README.md', 'r') as f:
     long_description = f.read()
 
 setup(
-    name='autohooks-black',
+    name='autohooks-plugin-black',
     version=get_version(),
     author='Greenbone Networks GmbH',
     author_email='info@greenbone.net',
