@@ -16,7 +16,7 @@ Python Package Index using [pip](https://pip.pypa.io/):
 
     pip install autohooks-plugin-black
 
-Note the `pip` refers to the Python 3 package manager. In environment where
+Note the `pip` refers to the Python 3 package manager. In a environment where
 Python 2 is also available the correct command may be `pip3`.
 
 ### Install using pipenv
