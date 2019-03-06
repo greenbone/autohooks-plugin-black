@@ -4,7 +4,7 @@
 
 [![PyPI release](https://img.shields.io/pypi/v/autohooks-plugin-black.svg)](https://pypi.org/project/autohooks-plugin-black/)
 
-An [autohooks](https://github.com/bjoernricks/autohooks) plugin for python code
+An [autohooks](https://github.com/greenbone/autohooks) plugin for python code
 formatting via [black](https://github.com/ambv/black).
 
 ## Installation
@@ -44,9 +44,9 @@ This project is maintained by [Greenbone Networks GmbH](https://www.greenbone.ne
 ## Contributing
 
 Your contributions are highly appreciated. Please
-[create a pull request](https://github.com/bjoernricks/autohooks-plugin-black/pulls)
+[create a pull request](https://github.com/greenbone/autohooks-plugin-black/pulls)
 on GitHub. Bigger changes need to be discussed with the development team via the
-[issues section at GitHub](https://github.com/bjoernricks/autohooks-plugin-black/issues)
+[issues section at GitHub](https://github.com/greenbone/autohooks-plugin-black/issues)
 first.
 
 ## License
