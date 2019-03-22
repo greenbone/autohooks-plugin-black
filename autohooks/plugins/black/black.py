@@ -15,15 +15,18 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import fnmatch
 import subprocess
 
 from autohooks.api import out
-from autohooks.api.path import is_python_path
 from autohooks.api.git import (
     get_staged_status,
     stage_files_from_status_list,
     stash_unstaged_changes,
 )
+from autohooks.api.path import match
+
+DEFAULT_INCLUDE = ('*.py',)
 
 
 def check_black_installed():
@@ -35,12 +38,30 @@ def check_black_installed():
         )
 
 
-def precommit():
+def get_black_config(config):
+    return config.get('tool').get('autohooks').get('plugins').get('black')
+
+
+def get_include_from_config(config):
+    if not config:
+        return DEFAULT_INCLUDE
+
+    black_config = get_black_config(config)
+    include = black_config.get_value('include', DEFAULT_INCLUDE)
+
+    if isinstance(include, str):
+        return [include]
+
+    return include
+
+
+def precommit(config=None, **kwargs):
     out('Running black pre-commit hook')
 
     check_black_installed()
 
-    files = [f for f in get_staged_status() if is_python_path(f.path)]
+    include = get_include_from_config(config)
+    files = [f for f in get_staged_status() if match(f.path, include)]
 
     if len(files) == 0:
         out('No staged files for black available')
