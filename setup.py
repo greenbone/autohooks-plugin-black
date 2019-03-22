@@ -40,7 +40,7 @@ setup(
     url='https://github.com/bjoernricks/autohooks-plugin-black',
     packages=find_namespace_packages(include=['autohooks.*']),
     python_requires='>=3.5',
-    install_requires=['autohooks', 'black'],
+    install_requires=['autohooks>=1.1', 'black'],
     classifiers=[
         # Full list: https://pypi.org/pypi?%3Aaction=list_classifiers
         'Development Status :: 4 - Beta',
