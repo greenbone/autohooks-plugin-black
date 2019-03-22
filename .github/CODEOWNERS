@@ -1,0 +1,5 @@
+# default reviewers
+*                 @bjoernricks
+
+# pylint config
+.pylintrc         @bjoernricks @greenbone/qm
