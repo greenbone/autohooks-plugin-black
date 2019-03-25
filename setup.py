@@ -18,7 +18,7 @@
 from pkg_resources import safe_version
 from setuptools import setup, find_namespace_packages
 
-VERSION = (1, 0, 1, 'alpha')
+VERSION = (1, 1, 0, 'alpha')
 
 
 def get_version():
@@ -40,7 +40,7 @@ setup(
     url='https://github.com/greenbone/autohooks-plugin-black',
     packages=find_namespace_packages(include=['autohooks.*']),
     python_requires='>=3.5',
-    install_requires=['autohooks', 'black'],
+    install_requires=['autohooks>=1.1', 'black'],
     classifiers=[
         # Full list: https://pypi.org/pypi?%3Aaction=list_classifiers
         'Development Status :: 4 - Beta',

@@ -37,6 +37,18 @@ To activate the black autohooks plugin please add the following setting to your
 pre-commit = ["autohooks.plugins.black"]
 ```
 
+By default, autohooks plugin black checks all files with a *.py* ending. If only
+files in a sub-directory or files with different endings should be formatted,
+just add the following setting:
+
+```toml
+[tool.autohooks]
+pre-commit = ["autohooks.plugins.black"]
+
+[tool.autohooks.plugins.black]
+include = ['foo/*.py', '*.foo']
+```
+
 ## Maintainer
 
 This project is maintained by [Greenbone Networks GmbH](https://www.greenbone.net/).
