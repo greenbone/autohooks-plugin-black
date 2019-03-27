@@ -39,7 +39,7 @@ def check_black_installed():
 
 
 def get_black_config(config):
-    return config.get('tool').get('autohooks').get('plugins').get('black')
+    return config.get('tool', 'autohooks', 'plugins', 'black')
 
 
 def get_include_from_config(config):
