@@ -30,7 +30,7 @@ DEFAULT_INCLUDE = ('*.py',)
 
 def check_black_installed():
     try:
-        import black
+        import black  # pylint: disable=unused-import
     except ImportError:
         raise Exception(
             'Could not find black. Please add black to your python environment'
@@ -54,7 +54,7 @@ def get_include_from_config(config):
     return include
 
 
-def precommit(config=None, **kwargs):
+def precommit(config=None, **kwargs):  # pylint: disable=unused-argument
     out('Running black pre-commit hook')
 
     check_black_installed()
