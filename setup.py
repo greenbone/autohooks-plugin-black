@@ -27,7 +27,7 @@ def get_version():
 
 
 with open('README.md', 'r') as f:
-    long_description = f.read()
+    long_description = f.read()  # pylint: disable=invalid-name
 
 setup(
     name='autohooks-plugin-black',

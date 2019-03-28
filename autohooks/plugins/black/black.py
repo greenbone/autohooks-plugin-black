@@ -1,4 +1,4 @@
-# Copyright (C) 2017-2019 Greenbone Networks GmbH
+# Copyright (C) 2019 Greenbone Networks GmbH
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 #
@@ -15,10 +15,9 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import fnmatch
 import subprocess
 
-from autohooks.api import out
+from autohooks.api import out, ok, error
 from autohooks.api.git import (
     get_staged_status,
     stage_files_from_status_list,
@@ -31,7 +30,7 @@ DEFAULT_INCLUDE = ('*.py',)
 
 def check_black_installed():
     try:
-        import black
+        import black  # pylint: disable=unused-import
     except ImportError:
         raise Exception(
             'Could not find black. Please add black to your python environment'
@@ -39,7 +38,7 @@ def check_black_installed():
 
 
 def get_black_config(config):
-    return config.get('tool').get('autohooks').get('plugins').get('black')
+    return config.get('tool', 'autohooks', 'plugins', 'black')
 
 
 def get_include_from_config(config):
@@ -55,7 +54,7 @@ def get_include_from_config(config):
     return include
 
 
-def precommit(config=None, **kwargs):
+def precommit(config=None, **kwargs):  # pylint: disable=unused-argument
     out('Running black pre-commit hook')
 
     check_black_installed()
@@ -64,14 +63,17 @@ def precommit(config=None, **kwargs):
     files = [f for f in get_staged_status() if match(f.path, include)]
 
     if len(files) == 0:
-        out('No staged files for black available')
+        ok('No staged files for black available')
         return 0
-
-    out('Running black on {}'.format(', '.join([str(f.path) for f in files])))
 
     with stash_unstaged_changes(files):
         for f in files:
-            subprocess.check_call(['black', '-q', str(f.absolute_path())])
+            try:
+                subprocess.check_call(['black', '-q', str(f.absolute_path())])
+                ok('Running black on {}'.format(str(f.path)))
+            except subprocess.CalledProcessError as e:
+                error('Running black on {}'.format(str(f.path)))
+                raise e
 
         stage_files_from_status_list(files)
 

@@ -9,8 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 ### Changed
+
 * Changed git repository location to https://github.com/greenbone/autohooks-plugin-black
 * Allow to configure files to be formatted [#1](https://github.com/greenbone/autohooks-plugin-black/pull/1)
+* Use new autohooks status API to print messages [#2](https://github.com/greenbone/autohooks-plugin-black/pull/2)
 
 ### Removed
 
