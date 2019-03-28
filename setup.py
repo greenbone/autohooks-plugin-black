@@ -18,7 +18,7 @@
 from pkg_resources import safe_version
 from setuptools import setup, find_namespace_packages
 
-VERSION = (1, 1, 0, 'alpha')
+VERSION = (1, 1, 0)
 
 
 def get_version():

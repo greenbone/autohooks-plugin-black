@@ -1,0 +1,2 @@
+include README.md CHANGELOG.md LICENSE pyproject.toml setup.py Pipfile Pipfile.lock
+recursive-include tests *.py
