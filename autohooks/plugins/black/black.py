@@ -15,10 +15,9 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import fnmatch
 import subprocess
 
-from autohooks.api import out
+from autohooks.api import out, ok, error
 from autohooks.api.git import (
     get_staged_status,
     stage_files_from_status_list,
@@ -64,14 +63,17 @@ def precommit(config=None, **kwargs):
     files = [f for f in get_staged_status() if match(f.path, include)]
 
     if len(files) == 0:
-        out('No staged files for black available')
+        ok('No staged files for black available')
         return 0
-
-    out('Running black on {}'.format(', '.join([str(f.path) for f in files])))
 
     with stash_unstaged_changes(files):
         for f in files:
-            subprocess.check_call(['black', '-q', str(f.absolute_path())])
+            try:
+                subprocess.check_call(['black', '-q', str(f.absolute_path())])
+                ok('Running black on {}'.format(str(f.path)))
+            except subprocess.CalledProcessError as e:
+                error('Running black on {}'.format(str(f.path)))
+                raise e
 
         stage_files_from_status_list(files)
 
