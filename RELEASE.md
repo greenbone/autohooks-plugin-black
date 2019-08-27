@@ -17,12 +17,11 @@ and [PEP440](https://www.python.org/dev/peps/pep-0440/).
   git checkout -b create-new-release upstream/master
   ```
 
-* Open [setup.py](setup.py)
-  and increment the version number.
+* Open [setup.py](setup.py) and increment the version number
 
 * Update [CHANGELOG](CHANGELOG.md)
 
-* Create a distribution files
+* Create distribution files
 
   ```sh
   rm -rf dist build autohooks_plugin_black.egg-info
@@ -36,7 +35,7 @@ and [PEP440](https://www.python.org/dev/peps/pep-0440/).
   git commit -m "Prepare release <version>"
   ```
 
-* Create a pypirc file
+* Create a `.pypirc` file
 
   ```sh
   vim ~/.pypirc
@@ -58,7 +57,7 @@ and [PEP440](https://www.python.org/dev/peps/pep-0440/).
   username = <username>
   ```
 
-* Create an account at [Test PyPI](https://packaging.python.org/guides/using-testpypi/)
+* If necessary, create an account at [Test PyPI](https://packaging.python.org/guides/using-testpypi/)
 
 * Upload the archives in dist to [Test PyPI](https://test.pypi.org/)
 
@@ -115,9 +114,9 @@ and [PEP440](https://www.python.org/dev/peps/pep-0440/).
   python3 setup.py sdist bdist_wheel
   ```
 
-* Create an account at [PyPI](https://pypi.org/) if not exist already
+* If necessary, create an account at [PyPI](https://pypi.org/)
 
-* Upload to real [PyPI](https://pypi.org/)
+* Upload to the real [PyPI](https://pypi.org/)
 
   ```sh
   twine upload dist/*
@@ -133,6 +132,7 @@ and [PEP440](https://www.python.org/dev/peps/pep-0440/).
 * Create a commit
 
   ```sh
+  git add setup.py
   git commit -m "Update version after <version> release"
   ```
 
