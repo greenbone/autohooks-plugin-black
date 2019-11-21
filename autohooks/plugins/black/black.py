@@ -17,7 +17,7 @@
 
 import subprocess
 
-from autohooks.api import out, ok, error
+from autohooks.api import ok, error
 from autohooks.api.git import (
     get_staged_status,
     stage_files_from_status_list,
@@ -26,14 +26,15 @@ from autohooks.api.git import (
 from autohooks.api.path import match
 
 DEFAULT_INCLUDE = ('*.py',)
+DEFAULT_ARGUMENTS = ('-q',)
 
 
 def check_black_installed():
     try:
-        import black  # pylint: disable=unused-import
+        import black  # pylint: disable=unused-import, import-outside-toplevel
     except ImportError:
         raise Exception(
-            'Could not find black. Please add black to your python environment'
+            'Could not find black. Please add black to your python environment.'
         )
 
 
@@ -41,35 +42,56 @@ def get_black_config(config):
     return config.get('tool', 'autohooks', 'plugins', 'black')
 
 
+def ensure_iterable(value):
+    if isinstance(value, str):
+        return [value]
+    return value
+
+
 def get_include_from_config(config):
     if not config:
         return DEFAULT_INCLUDE
 
     black_config = get_black_config(config)
-    include = black_config.get_value('include', DEFAULT_INCLUDE)
-
-    if isinstance(include, str):
-        return [include]
+    include = ensure_iterable(
+        black_config.get_value('include', DEFAULT_INCLUDE)
+    )
 
     return include
 
 
-def precommit(config=None, **kwargs):  # pylint: disable=unused-argument
-    out('Running black pre-commit hook')
+def get_black_arguments(config):
+    if not config:
+        return DEFAULT_ARGUMENTS
 
+    black_config = get_black_config(config)
+    arguments = ensure_iterable(
+        black_config.get_value('arguments', DEFAULT_ARGUMENTS)
+    )
+
+    return arguments
+
+
+def precommit(config=None, **kwargs):  # pylint: disable=unused-argument
     check_black_installed()
 
     include = get_include_from_config(config)
     files = [f for f in get_staged_status() if match(f.path, include)]
 
     if len(files) == 0:
-        ok('No staged files for black available')
+        ok('No staged files for black available.')
         return 0
+
+    arguments = ['black']
+    arguments.extend(get_black_arguments(config))
 
     with stash_unstaged_changes(files):
         for f in files:
             try:
-                subprocess.check_call(['black', '-q', str(f.absolute_path())])
+                args = arguments.copy()
+                args.append(str(f.absolute_path()))
+
+                subprocess.check_call(args)
                 ok('Running black on {}'.format(str(f.path)))
             except subprocess.CalledProcessError as e:
                 error('Running black on {}'.format(str(f.path)))
