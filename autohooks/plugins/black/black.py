@@ -26,6 +26,7 @@ from autohooks.api.git import (
 from autohooks.api.path import match
 
 DEFAULT_INCLUDE = ('*.py',)
+DEFAULT_ARGUMENTS = ('-q',)
 
 
 def check_black_installed():
@@ -41,17 +42,34 @@ def get_black_config(config):
     return config.get('tool', 'autohooks', 'plugins', 'black')
 
 
+def ensure_iterable(value):
+    if isinstance(value, str):
+        return [value]
+    return value
+
+
 def get_include_from_config(config):
     if not config:
         return DEFAULT_INCLUDE
 
     black_config = get_black_config(config)
-    include = black_config.get_value('include', DEFAULT_INCLUDE)
-
-    if isinstance(include, str):
-        return [include]
+    include = ensure_iterable(
+        black_config.get_value('include', DEFAULT_INCLUDE)
+    )
 
     return include
+
+
+def get_black_arguments(config):
+    if not config:
+        return DEFAULT_ARGUMENTS
+
+    black_config = get_black_config(config)
+    arguments = ensure_iterable(
+        black_config.get_value('arguments', DEFAULT_ARGUMENTS)
+    )
+
+    return arguments
 
 
 def precommit(config=None, **kwargs):  # pylint: disable=unused-argument
@@ -64,10 +82,16 @@ def precommit(config=None, **kwargs):  # pylint: disable=unused-argument
         ok('No staged files for black available.')
         return 0
 
+    arguments = ['black']
+    arguments.extend(get_black_arguments(config))
+
     with stash_unstaged_changes(files):
         for f in files:
             try:
-                subprocess.check_call(['black', '-q', str(f.absolute_path())])
+                args = arguments.copy()
+                args.append(str(f.absolute_path()))
+
+                subprocess.check_call(args)
                 ok('Running black on {}'.format(str(f.path)))
             except subprocess.CalledProcessError as e:
                 error('Running black on {}'.format(str(f.path)))
