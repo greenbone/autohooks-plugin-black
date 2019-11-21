@@ -30,7 +30,7 @@ DEFAULT_INCLUDE = ('*.py',)
 
 def check_black_installed():
     try:
-        import black  # pylint: disable=unused-import
+        import black  # pylint: disable=unused-import, import-outside-toplevel
     except ImportError:
         raise Exception(
             'Could not find black. Please add black to your python environment'
