@@ -33,7 +33,7 @@ def check_black_installed():
         import black  # pylint: disable=unused-import, import-outside-toplevel
     except ImportError:
         raise Exception(
-            'Could not find black. Please add black to your python environment'
+            'Could not find black. Please add black to your python environment.'
         )
 
 
@@ -63,7 +63,7 @@ def precommit(config=None, **kwargs):  # pylint: disable=unused-argument
     files = [f for f in get_staged_status() if match(f.path, include)]
 
     if len(files) == 0:
-        ok('No staged files for black available')
+        ok('No staged files for black available.')
         return 0
 
     with stash_unstaged_changes(files):
