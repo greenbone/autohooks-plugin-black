@@ -17,7 +17,7 @@
 
 import subprocess
 
-from autohooks.api import out, ok, error
+from autohooks.api import ok, error
 from autohooks.api.git import (
     get_staged_status,
     stage_files_from_status_list,
@@ -55,8 +55,6 @@ def get_include_from_config(config):
 
 
 def precommit(config=None, **kwargs):  # pylint: disable=unused-argument
-    out('Running black pre-commit hook')
-
     check_black_installed()
 
     include = get_include_from_config(config)
