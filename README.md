@@ -49,6 +49,17 @@ pre-commit = ["autohooks.plugins.black"]
 include = ['foo/*.py', '*.foo']
 ```
 
+Also by default, autohooks plugin black executes black with the `-q` argument.
+If e.g. the generated patch should be shown the following setting can be used:
+
+```toml
+[tool.autohooks]
+pre-commit = ["autohooks.plugins.black"]
+
+[tool.autohooks.plugins.black]
+arguments = ["-q", "--diff"]
+```
+
 ## Maintainer
 
 This project is maintained by [Greenbone Networks GmbH](https://www.greenbone.net/).
