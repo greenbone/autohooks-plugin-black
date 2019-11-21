@@ -5,17 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [1.2.0] - 2019-11-21
 
 ### Added
 * Allow to configure the arguments for black in *pyproject.toml* [#19](https://github.com/greenbone/autohooks-plugin-black/pull/19)
 
-### Changed
-### Deprecated
-### Fixed
-### Remove
-
-[Unreleased]: https://github.com/greenbone/autohooks-plugin-black/compare/v1.1.0...master
+[1.2.0]: https://github.com/greenbone/autohooks-plugin-black/compare/v1.1.0...v1.2.0
 
 ## [1.1.0] - 2019-03-28
 
