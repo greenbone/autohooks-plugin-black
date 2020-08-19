@@ -19,13 +19,13 @@ Python Package Index using [pip](https://pip.pypa.io/):
 Note the `pip` refers to the Python 3 package manager. In a environment where
 Python 2 is also available the correct command may be `pip3`.
 
-### Install using pipenv
+### Install using poetry
 
-It is highly encouraged to use [pipenv](https://github.com/pypa/pipenv) for
+It is highly encouraged to use [poetry](https://python-poetry.org) for
 maintaining your project's dependencies. Normally autohooks-plugin-black is
 installed as a development dependency.
 
-    pipenv install --dev autohooks-plugin-black
+    poetry install
 
 ## Usage
 
