@@ -1,5 +1,55 @@
 [build-system]
-requires = ["setuptools", "wheel"]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
+
+[tool.poetry]
+name = "autohooks-plugin-black"
+version = "20.4dev1"
+description = "An autohooks plugin for python code formatting via black" 
+license = "GPL-3.0-or-later"
+authors = ["Greenbone Networks GmbH <info@greenbone.net>"]
+readme = "README.md"
+homepage = "https://github.com/greenbone/autohooks-plugin-black"
+repository = "https://github.com/greenbone/autohooks-plugin-black"
+documentation = ""
+classifiers = [
+  # Full list: https://pypi.org/pypi?%3Aaction=list_classifiers
+  "Development Status :: 5 - Production/Stable",
+  "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "Programming Language :: Python :: 3.5",
+  "Programming Language :: Python :: 3.6",
+  "Programming Language :: Python :: 3.7",
+  "Programming Language :: Python :: 3.8",
+  "Operating System :: OS Independent",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+]
+packages = [
+  { include = "autohooks" },
+  { include = "CHANGELOG.md", format = "sdist"},
+  { include = "RELEASE.md", format = "sdist"},
+  { include = "poetry.lock", format = "sdist"},
+  { include = "poetry.toml", format = "sdist"},
+]
+keywords = [
+  "git",
+  "formatting",
+  "linting",
+  "hooks",
+  "black",
+]
+
+[tool.poetry.dependencies]
+python = "^3.5"
+black = {version = "19.10b0", python = "^3.6"}
+autohooks = ">=1.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "*"
+black = {version = "19.10b0", python = "^3.6"}
+mypy = "^0.770"
+pylint = "^2.4.4"
 
 [tool.black]
 line-length = 80
@@ -21,4 +71,5 @@ exclude = '''
 '''
 
 [tool.autohooks]
-pre-commit = ['autohooks.plugins.black']
+mode = "poetry"
+pre-commit = ['autohooks.plugins.black', 'autohooks.plugins.pylint']
