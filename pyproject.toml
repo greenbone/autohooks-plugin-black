@@ -42,12 +42,12 @@ keywords = [
 
 [tool.poetry.dependencies]
 python = "^3.5"
-black = {version = "19.10b0", python = "^3.6"}
+black = {version = "20.8b1", python = "^3.6"}
 autohooks = ">=1.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "*"
-black = {version = "19.10b0", python = "^3.6"}
+black = {version = "20.8b1", python = "^3.6"}
 mypy = "^0.782"
 pylint = "^2.6.0"
 
