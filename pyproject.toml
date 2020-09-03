@@ -4,7 +4,7 @@ build-backend = "poetry.masonry.api"
 
 [tool.poetry]
 name = "autohooks-plugin-black"
-version = "20.4dev1"
+version = "20.9.0.dev1"
 description = "An autohooks plugin for python code formatting via black" 
 license = "GPL-3.0-or-later"
 authors = ["Greenbone Networks GmbH <info@greenbone.net>"]
@@ -43,13 +43,15 @@ keywords = [
 [tool.poetry.dependencies]
 python = "^3.5"
 black = {version = "20.8b1", python = "^3.6"}
-autohooks = ">=1.1"
+autohooks = ">=2.2.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "*"
 black = {version = "20.8b1", python = "^3.6"}
 mypy = "^0.782"
 pylint = "^2.6.0"
+pontos = {version="^0.3.0", python = "^3.7"}
+
 
 [tool.black]
 line-length = 80
@@ -73,3 +75,6 @@ exclude = '''
 [tool.autohooks]
 mode = "poetry"
 pre-commit = ['autohooks.plugins.black', 'autohooks.plugins.pylint']
+
+[tool.pontos.version]
+version-module-file = "autohooks/plugins/black/__version__.py"

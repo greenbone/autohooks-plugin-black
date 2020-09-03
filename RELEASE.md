@@ -1,47 +1,32 @@
 # Release instructions
 
 Before creating a new release please do a careful consideration about the
-version number for the new release. We are following [Semantic Versioning](https://semver.org/)
+version number for the new release. We are following [Calendar Versioning](https://calver.org/)
 and [PEP440](https://www.python.org/dev/peps/pep-0440/).
+
+## Preparing the Required Python Packages
 
 * Install development dependencies
 
   ```sh
-  pipenv install --dev
+  poetry install
   ```
 
-* Fetch upstream changes and create release branch
+* Install twine for pypi package uploads
 
   ```sh
-  git fetch upstream
-  git checkout -b create-new-release upstream/master
+  python3 -m pip install --user --upgrade twine
   ```
 
-* Open [setup.py](setup.py) and increment the version number
+## Configuring the Access to the Python Package Index (PyPI)
 
-* Update [CHANGELOG](CHANGELOG.md)
+*Note:* This is only necessary for users performing the release process for the
+first time.
 
-* Create distribution files
+* Create an account at [Test PyPI](https://packaging.python.org/guides/using-testpypi/).
 
-  ```sh
-  rm -rf dist build autohooks_plugin_black.egg-info
-  python3 setup.py sdist bdist_wheel
-  ```
-
-* Create a git commit
-
-  ```sh
-  git add .
-  git commit -m "Prepare release <version>"
-  ```
-
-* Create a `.pypirc` file
-
-  ```sh
-  vim ~/.pypirc
-  ```
-
-  with the following content (Note: `<username>` must be replaced)
+* Create a pypi configuration file `~/.pypirc` with the following content (Note:
+  `<username>` must be replaced):
 
   ```ini
   [distutils]
@@ -55,89 +40,126 @@ and [PEP440](https://www.python.org/dev/peps/pep-0440/).
   [testpypi]
   repository = https://test.pypi.org/legacy/
   username = <username>
+
+## Create a GitHub Token for uploading the release files
+
+This step is only necessary if the token has to be created for the for time or
+if it has been lost.
+
+* Open Github Settings at https://github.com/settings/tokens
+* Create a new token
+* Copy token and store it carefully
+* Export token in your current shell
+
+  ```sh
+  export GITHUB_TOKEN=<token>
+  export GITHUB_USER=<name>
   ```
 
-* If necessary, create an account at [Test PyPI](https://packaging.python.org/guides/using-testpypi/)
+## Prepare testing the to be released version
 
-* Upload the archives in dist to [Test PyPI](https://test.pypi.org/)
+* Fetch upstream changes
+
+  ```sh
+  git remote add upstream git@github.com:greenbone/autohooks-plugin-black.git
+  git fetch upstream
+  git rebase update/master
+  ```
+
+* Get the current version number
+
+  ```sh
+  poetry run python -m pontos.version show
+  ```
+
+* Update the version number to some alpha version e.g.
+
+  ```sh
+  poetry run python -m pontos.version update 2.2.3a1
+  ```
+
+## Uploading to the PyPI Test Instance
+
+* Create a source and wheel distribution:
+
+  ```sh
+  rm -rf dist build autohooks-plugin-black.egg-info pip-wheel-metadata
+  poetry build
+  ```
+
+* Upload the archives in `dist` to [Test PyPI](https://test.pypi.org/):
 
   ```sh
   twine upload -r testpypi dist/*
   ```
 
-* Check if the package is available at https://test.pypi.org/project/autohooks-plugin-black
+* Check if the package is available at <https://test.pypi.org/project/autohooks-plugin-black>
 
 * Create a test directory
 
   ```sh
-  mkdir autohooks-install-test
-  cd autohooks-install-test
-  pipenv run pip install --pre -I --extra-index-url https://test.pypi.org/simple/ autohooks-plugin-black
+  mkdir autohooks-plugin-black-install-test
+  cd autohooks-plugin-black-install-test
+  git init
+  python3 -m venv test-env
+  source ./test-env/bin/activate
+  pip install -U pip  # ensure the environment uses a recent version of pip
+  pip install --pre -I --extra-index-url https://test.pypi.org/simple/ autohooks-plugin-black
+  python -c "from autohooks-plugin-black.__version__ import __version__; print(__version__)"
+  autohooks-plugin-black check
   ```
 
 * Remove test environment
 
   ```sh
-  pipenv --rm
+  deactivate
   cd ..
-  rm -rf autohooks-install-test
+  rm -rf autohooks-plugin-black-install-test
   ```
 
-* Create a release PR
+## Prepare the Release
+
+* Run pontos-release prepare
 
   ```sh
-  git push origin
+  poetry run pontos-release --release-version <version> --next-release-version <dev-version> --project autohooks-plugin-black --space greenbone --git-signing-key <your-public-gpg-key> --git-remote-name upstream prepare
   ```
-  Open GitHub and create a PR against https://github.com/greenbone/autohooks-plugin-black
 
-* Update after PR is merged
+* Check git log and tag
+
+  ```
+  git log -p
+
+  # is the changelog correct?
+  # does the version look right?
+  # does the tag point to the correct commit?
+  ```
+
+* If something did go wrong delete the tag, revert the commits and remove the
+  temporary file for the release changelog
+
+  ```
+  git tag -d v<version>
+  git reset <last-commit-id-before-running-pontos-release> --hard
+  rm .release.txt.md
+  ```
+
+## Create the Release
+
+* Run pontos-release release
 
   ```sh
-  git fetch upstream
-  git rebase upstream/master
-  ```
-* Create a git tag
-
-  ```sh
-  git tag v<version>
+  poetry run pontos-release --release-version <version> --next-release-version <dev-version> --project autohooks-plugin-black --space greenbone --git-signing-key <your-public-gpg-key> --git-remote-name upstream release
   ```
 
-  or even signed with your gpg key
+## Uploading to the 'real' PyPI
 
-  ```sh
-  git tag -s v<version>
-  ```
-* Create final distribution files
+* Uploading to PyPI is done automatically by pushing a git tag via CircleCI
 
-  ```sh
-  rm -rf dist build autohooks_plugin_black.egg-info
-  python3 setup.py sdist bdist_wheel
-  ```
+* Check if new version is available at <https://pypi.org/project/autohooks-plugin-black>
 
-* If necessary, create an account at [PyPI](https://pypi.org/)
+## Check the Release
 
-* Upload to the real [PyPI](https://pypi.org/)
+* Check the Github release:
 
-  ```sh
-  twine upload dist/*
-  ```
-
-* Check if new version is available at https://pypi.org/project/autohooks-plugin-black
-
-* Update version in [setup.py](setup.py)
-
-  Use a alpha version like `(1, 1, 1, 'alpha')` or
-  `(1, 1, 1, 'alpha', 0)`
-
-* Create a commit
-
-  ```sh
-  git add setup.py
-  git commit -m "Update version after <version> release"
-  ```
-
-* Push changes and tag to GitHub
-
-  ```sh
-  git push --tags upstream master
-  ```
+   See https://github.com/greenbone/autohooks-plugin-black/releases
