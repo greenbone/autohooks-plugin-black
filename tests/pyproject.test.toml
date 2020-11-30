@@ -1,0 +1,5 @@
+[tool.autohooks]
+pre-commit = ['foo', 'autohooks.plugins.pylint']
+
+[tool.autohooks.plugins.black]
+foo = 'bar'
