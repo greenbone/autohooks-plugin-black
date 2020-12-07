@@ -85,9 +85,7 @@ class AutohooksBlackTestCase(TestCase):
     @patch('autohooks.plugins.black.black.ok')
     @patch('autohooks.plugins.black.black.error')
     @patch('autohooks.plugins.black.black.get_staged_status')
-    def test_precommit_staged(
-        self, staged_mock, _error_mock, _ok_mock
-    ):
+    def test_precommit_staged(self, staged_mock, _error_mock, _ok_mock):
         staged_mock.return_value = [StatusEntry('M  tests/black_test.py')]
         ret = precommit()
         self.assertFalse(ret)
