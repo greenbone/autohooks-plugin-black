@@ -34,7 +34,8 @@ def check_black_installed():
         import black  # pylint: disable=unused-import, import-outside-toplevel
     except ImportError:
         raise Exception(
-            'Could not find black. Please add black to your python environment.'
+            'Could not find black. '
+            'Please add black to your python environment.'
         )
 
 
