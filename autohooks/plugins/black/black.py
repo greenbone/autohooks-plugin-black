@@ -36,7 +36,7 @@ def check_black_installed():
         raise Exception(
             'Could not find black. '
             'Please add black to your python environment.'
-        )
+        ) from None
 
 
 def get_black_config(config):
@@ -96,7 +96,7 @@ def precommit(config=None, **kwargs):  # pylint: disable=unused-argument
                 ok('Running black on {}'.format(str(f.path)))
             except subprocess.CalledProcessError as e:
                 error('Running black on {}'.format(str(f.path)))
-                raise e
+                raise e from None
 
         stage_files_from_status_list(files)
 
