@@ -17,15 +17,12 @@
 
 import sys
 
-from io import StringIO
 from pathlib import Path
 from unittest import TestCase
-from unittest.mock import patch, MagicMock, Mock
+from unittest.mock import patch
 
 from autohooks.config import load_config_from_pyproject_toml
-from autohooks.terminal import Terminal
-from autohooks.api import _set_terminal
-from autohooks.api.git import Status, StatusEntry, get_staged_status
+from autohooks.api.git import StatusEntry
 
 from autohooks.plugins.black.black import (
     DEFAULT_ARGUMENTS,
@@ -68,7 +65,7 @@ class AutohooksBlackTestCase(TestCase):
         bar = ensure_iterable(foo)  # pylint: disable=blacklisted-name
         self.assertEqual(bar, ['bar'])
 
-        foo = ['bar']
+        foo = ['bar']  # pylint: disable=blacklisted-name
         bar = ensure_iterable(foo)  # pylint: disable=blacklisted-name
         self.assertEqual(bar, ['bar'])
 
