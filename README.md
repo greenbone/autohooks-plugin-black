@@ -25,7 +25,7 @@ It is highly encouraged to use [poetry](https://python-poetry.org) for
 maintaining your project's dependencies. Normally autohooks-plugin-black is
 installed as a development dependency.
 
-    poetry install
+    poetry add --dev autohooks-plugin-black
 
 ## Usage
 
