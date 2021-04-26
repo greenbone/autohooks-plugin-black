@@ -272,7 +272,7 @@ dev = ["pre-commit", "tox"]
 
 [[package]]
 name = "pontos"
-version = "21.3.0"
+version = "21.4.0"
 description = "Common utilities and tools maintained by Greenbone Networks"
 category = "dev"
 optional = false
@@ -440,7 +440,7 @@ testing = ["pathlib2", "unittest2", "jaraco.itertools", "func-timeout"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.5"
-content-hash = "0701a53e7f059432eec679eec279848e1bd5f02cbb8c7abbf1f7ebcadef03d46"
+content-hash = "14fdafc44e20ea2e22d603b673d39211aae8cd5d093db34b7bdc9d61ebe2b928"
 
 [metadata.files]
 appdirs = [
@@ -582,8 +582,8 @@ pluggy = [
     {file = "pluggy-0.13.1.tar.gz", hash = "sha256:15b2acde666561e1298d71b523007ed7364de07029219b604cf808bfa1c765b0"},
 ]
 pontos = [
-    {file = "pontos-21.3.0-py3-none-any.whl", hash = "sha256:70731a5dc825b299209b1ccae6da3b8e2383cd03159ba0b12c3e563d655558d1"},
-    {file = "pontos-21.3.0.tar.gz", hash = "sha256:3456f3727440ca74be437519b90da0a86c9d8d0305c3d5623da89e322785b0bc"},
+    {file = "pontos-21.4.0-py3-none-any.whl", hash = "sha256:bc98903e164c6442e680700343251aa962f721cfb9802717bcffd372eb2b7b8d"},
+    {file = "pontos-21.4.0.tar.gz", hash = "sha256:83390bf5b7f0cd13f84043a64dbbcb3ac8a2c3d7723e84d8e7fc66316e8cd1f1"},
 ]
 py = [
     {file = "py-1.10.0-py2.py3-none-any.whl", hash = "sha256:3b80836aa6d1feeaa108e046da6423ab8f6ceda6468545ae8d02d9d58d18818a"},
