@@ -1,5 +1,2 @@
 # default reviewers
-*                 @greenbone/python-gvm-maintainers
-
-# pylint config
-.pylintrc         @greenbone/python-gvm-maintainers @greenbone/qm
+*                 @greenbone/autohooks-maintainers
