@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [21.6.0] - 2021-06-13
 
 ### Added
 * Adding pontos module for future releases [#60](https://github.com/greenbone/autohooks-plugin-black/pull/60)
@@ -14,10 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 Replaced pipenv with poetry for dependency management. poetry install works a bit different than pipenv install. It installs dev packages. [#51](https://github.com/greenbone/autohooks-plugin-black/pull/51)
 
-### Fixed
-### Removed
-
-[Unreleased]: https://github.com/greenbone/autohooks-plugin-black/compare/v1.2.0...master
+[21.6.0]: https://github.com/greenbone/autohooks-plugin-black/compare/v1.2.0...v21.6.0
 
 ## [1.2.0] - 2019-11-21
 
