@@ -51,7 +51,7 @@ black = {version = "20.8b1", python = "^3.6"}
 autohooks-plugin-pylint = "^1.2.0"
 mypy = "^0.812"
 pylint = "^2.6.2"
-pontos = {version="^21.4.0", python = "^3.7"}
+pontos = {version="^21.6.3", python = "^3.7"}
 
 
 [tool.black]
