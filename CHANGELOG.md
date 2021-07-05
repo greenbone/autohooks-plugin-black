@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 ### Changed
+* Don't depend on a single version of black and allow black versions up to current 21.6b0 [#131](https://github.com/greenbone/autohooks-plugin-black/pull/131)
+
 ### Deprecated
 ### Removed
 ### Fixed
