@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+### Added
+### Changed
+### Deprecated
+### Removed
+### Fixed
+
+[Unreleased]: https://github.com/greenbone/autohooks-plugin-black/compare/v21.7.1...HEAD
+
+
 ## [21.7.1] - 2021-07-26
 ### Changed
 * Allow black up tp current 21.7b0 [#143](https://github.com/greenbone/autohooks-plugin-black/pull/143)
