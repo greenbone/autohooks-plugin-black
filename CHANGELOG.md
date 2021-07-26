@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 ### Changed
+* Allow black up tp current 21.7b0 [#143](https://github.com/greenbone/autohooks-plugin-black/pull/143)
+
 ### Deprecated
 ### Removed
 ### Fixed
