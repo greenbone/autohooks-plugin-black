@@ -50,7 +50,7 @@ pytest = "*"
 black = {version = "21.6b0", python = "^3.6"}
 autohooks-plugin-pylint = "^1.2.0"
 mypy = "^0.910"
-pylint = "^2.6.2"
+pylint = "^2.9.5"
 pontos = {version="^21.7.4", python = "^3.7"}
 
 
