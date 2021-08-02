@@ -49,7 +49,7 @@ autohooks = ">=2.2.0"
 pytest = "*"
 autohooks-plugin-pylint = "^1.2.0"
 mypy = "^0.910"
-pylint = "^2.9.5"
+pylint = "^2.9.6"
 pontos = {version="^21.7.4", python = "^3.7"}
 
 
