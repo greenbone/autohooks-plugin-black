@@ -283,7 +283,7 @@ testing = ["pytest", "pytest-benchmark"]
 
 [[package]]
 name = "pontos"
-version = "21.7.4"
+version = "21.9.1"
 description = "Common utilities and tools maintained by Greenbone Networks"
 category = "dev"
 optional = false
@@ -451,7 +451,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.6.2,<4.0"
-content-hash = "d9b908ecf7815aaa3ed086eaec83fefed15c18267157262e8cea6ac96e1882d6"
+content-hash = "5ddc73eeaf18dcac6acac8c6fcade1ede3d1e8da90d9fac79bc2b746ff37beca"
 
 [metadata.files]
 astroid = [
@@ -592,8 +592,8 @@ pluggy = [
     {file = "pluggy-1.0.0.tar.gz", hash = "sha256:4224373bacce55f955a878bf9cfa763c1e360858e330072059e10bad68531159"},
 ]
 pontos = [
-    {file = "pontos-21.7.4-py3-none-any.whl", hash = "sha256:780647abc41235c382cf1735319eb8d9e98607b46608b321787303019e6b4443"},
-    {file = "pontos-21.7.4.tar.gz", hash = "sha256:342a5939fbbed1ca4b9b34991987b6a8d1c52627047319c8ce73b69f432cc9a5"},
+    {file = "pontos-21.9.1-py3-none-any.whl", hash = "sha256:29167625759c42e7ce3e8e13ef81ed377cefd210a34380bc93931ec31ddcfbfc"},
+    {file = "pontos-21.9.1.tar.gz", hash = "sha256:36bbc8a89343f3f00182954b3c8d2ff3509f1ced1dc5b2cd8d5df110a8241bdf"},
 ]
 py = [
     {file = "py-1.10.0-py2.py3-none-any.whl", hash = "sha256:3b80836aa6d1feeaa108e046da6423ab8f6ceda6468545ae8d02d9d58d18818a"},
