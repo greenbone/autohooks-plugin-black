@@ -93,9 +93,9 @@ def precommit(config=None, **kwargs):  # pylint: disable=unused-argument
                 args.append(str(f.absolute_path()))
 
                 subprocess.check_call(args)
-                ok('Running black on {}'.format(str(f.path)))
+                ok(f'Running black on {str(f.path)}')
             except subprocess.CalledProcessError as e:
-                error('Running black on {}'.format(str(f.path)))
+                error(f'Running black on {str(f.path)}')
                 raise e from None
 
         stage_files_from_status_list(files)
