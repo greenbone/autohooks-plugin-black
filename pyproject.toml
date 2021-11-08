@@ -46,7 +46,7 @@ autohooks = "^21.6.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "*"
-autohooks-plugin-pylint = "^1.2.0"
+autohooks-plugin-pylint = "^21.6.0"
 mypy = "^0.910"
 pylint = "^2.11.1"
 pontos = "^21.10.2"
