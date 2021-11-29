@@ -48,7 +48,7 @@ autohooks = "^21.6.0"
 pytest = "*"
 autohooks-plugin-pylint = "^21.6.0"
 mypy = "^0.910"
-pylint = "^2.11.1"
+pylint = "^2.12.1"
 pontos = "^21.10.2"
 
 
