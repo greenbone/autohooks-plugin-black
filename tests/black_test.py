@@ -16,19 +16,20 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-# pylint: disable-all
-from io import StringIO, BytesIO, FileIO  # pylint: disable=unused-import
 import sys
 
-cmd = ['pylint', 'autohooks/plugins/pylint/pylint.py']
+# pylint: disable-all
+from io import BytesIO, FileIO, StringIO  # pylint: disable=unused-import
+
+cmd = ["pylint", "autohooks/plugins/pylint/pylint.py"]
 import subprocess  # pylint: disable=
 
 # status = subprocess.call(cmd)
-iofile = 'tmp.txt'
+iofile = "tmp.txt"
 # status = subprocess.call(cmd, stdout=iofile)
 # blah blah lots of code ...
 
 status = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 out, err = status.communicate()
-print(out.decode(encoding='utf-8'))
-print(err.decode(encoding='utf-8'))
+print(out.decode(encoding="utf-8"))
+print(err.decode(encoding="utf-8"))
