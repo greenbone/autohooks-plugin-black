@@ -47,6 +47,7 @@ autohooks = ">=21.6.0"
 [tool.poetry.dev-dependencies]
 pytest = "*"
 autohooks-plugin-pylint = ">=21.6.0"
+autohooks-plugin-isort = ">=22.3.0"
 mypy = "^0.961"
 pylint = "^2.13.9"
 pontos = ">=22.5.0"
@@ -72,7 +73,15 @@ exclude = '''
 
 [tool.autohooks]
 mode = "poetry"
-pre-commit = ['autohooks.plugins.black', 'autohooks.plugins.pylint']
+pre-commit = [
+  'autohooks.plugins.isort',
+  'autohooks.plugins.black',
+  'autohooks.plugins.pylint',
+]
 
 [tool.pontos.version]
 version-module-file = "autohooks/plugins/black/__version__.py"
+
+[tool.isort]
+profile = "black"
+line_length = 80

@@ -48,6 +48,18 @@ pontos = ">=22.4.0,<23.0.0"
 tomlkit = ">=0.5.11"
 
 [[package]]
+name = "autohooks-plugin-isort"
+version = "22.3.0"
+description = "An autohooks plugin for python code formatting via isort"
+category = "dev"
+optional = false
+python-versions = ">=3.7,<4.0"
+
+[package.dependencies]
+autohooks = ">=21.6.0"
+isort = ">=5.8.0,<6.0.0"
+
+[[package]]
 name = "autohooks-plugin-pylint"
 version = "21.6.0"
 description = "An autohooks plugin for python code linting via pylint"
@@ -441,7 +453,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "2511d9bc01015ca6160e88da350f0c4e7ce5ac3cca520017e0a1f1293bef5bbb"
+content-hash = "f4142b0a249bec4dd609d3b4108b46ad9773326d94115ddbe7b2f6781e02ee01"
 
 [metadata.files]
 astroid = [
@@ -459,6 +471,9 @@ attrs = [
 autohooks = [
     {file = "autohooks-22.7.0-py3-none-any.whl", hash = "sha256:729fed659ab02ebfaa114ff0aaf0ec7bd009f7f78a4cc4315014578c39f46bec"},
     {file = "autohooks-22.7.0.tar.gz", hash = "sha256:1bc929e05f92324b51ffd23ec3dfd93250ceceab920a0825e9f3a36d9914ce95"},
+]
+autohooks-plugin-isort = [
+    {file = "autohooks_plugin_isort-22.3.0-py3-none-any.whl", hash = "sha256:4b85ee96a501d6cb29c005dca44dc4638d0b548a0302e8bbfa1bea0fad7d3f40"},
 ]
 autohooks-plugin-pylint = [
     {file = "autohooks-plugin-pylint-21.6.0.tar.gz", hash = "sha256:6f1a486f19c8012618fecd9eaa985f5da3ef5c954b32d823323439547b947302"},

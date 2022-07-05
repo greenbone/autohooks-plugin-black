@@ -17,7 +17,7 @@
 
 import subprocess
 
-from autohooks.api import ok, error
+from autohooks.api import error, ok
 from autohooks.api.git import (
     get_staged_status,
     stage_files_from_status_list,

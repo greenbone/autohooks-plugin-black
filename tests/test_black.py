@@ -16,22 +16,21 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import sys
-
 from pathlib import Path
 from unittest import TestCase
 from unittest.mock import patch
 
-from autohooks.config import load_config_from_pyproject_toml
 from autohooks.api.git import StatusEntry
+from autohooks.config import load_config_from_pyproject_toml
 
 from autohooks.plugins.black.black import (
     DEFAULT_ARGUMENTS,
     DEFAULT_INCLUDE,
     check_black_installed,
     ensure_iterable,
-    get_include_from_config,
     get_black_arguments,
     get_black_config,
+    get_include_from_config,
     precommit,
 )
 
