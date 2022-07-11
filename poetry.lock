@@ -293,7 +293,7 @@ testing = ["pytest", "pytest-benchmark"]
 
 [[package]]
 name = "pontos"
-version = "22.5.0"
+version = "22.7.2"
 description = "Common utilities and tools maintained by Greenbone Networks"
 category = "main"
 optional = false
@@ -301,7 +301,7 @@ python-versions = ">=3.7,<4.0"
 
 [package.dependencies]
 colorful = ">=0.5.4,<0.6.0"
-packaging = ">=20.3,<21.0"
+packaging = ">=20.3"
 requests = ">=2.24.0,<3.0.0"
 tomlkit = ">=0.5.11"
 
