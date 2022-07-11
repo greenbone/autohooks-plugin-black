@@ -36,7 +36,7 @@ tests_no_zope = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>
 
 [[package]]
 name = "autohooks"
-version = "22.7.0"
+version = "22.7.1"
 description = "Library for managing git hooks"
 category = "main"
 optional = false
