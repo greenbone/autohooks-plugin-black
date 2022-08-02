@@ -73,7 +73,9 @@ def get_black_arguments(config):
     return arguments
 
 
-def precommit(config=None, **kwargs):  # pylint: disable=unused-argument
+def precommit(
+    config=None, report_progress=None, **kwargs
+):  # pylint: disable=unused-argument
     check_black_installed()
 
     include = get_include_from_config(config)
@@ -82,6 +84,9 @@ def precommit(config=None, **kwargs):  # pylint: disable=unused-argument
     if len(files) == 0:
         ok("No staged files for black available.")
         return 0
+
+    if report_progress:
+        report_progress.init(len(files))
 
     arguments = ["black"]
     arguments.extend(get_black_arguments(config))
@@ -94,6 +99,8 @@ def precommit(config=None, **kwargs):  # pylint: disable=unused-argument
 
                 subprocess.check_call(args)
                 ok(f"Running black on {str(f.path)}")
+                if report_progress:
+                    report_progress.progress()
             except subprocess.CalledProcessError as e:
                 error(f"Running black on {str(f.path)}")
                 raise e from None
