@@ -100,7 +100,7 @@ def precommit(
                 subprocess.check_call(args)
                 ok(f"Running black on {str(f.path)}")
                 if report_progress:
-                    report_progress.progress()
+                    report_progress.update()
             except subprocess.CalledProcessError as e:
                 error(f"Running black on {str(f.path)}")
                 raise e from None
