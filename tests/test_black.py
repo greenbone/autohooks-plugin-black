@@ -54,7 +54,6 @@ class AutohooksBlackTestCase(TestCase):
         self.assertTrue(config_path.is_file())
 
         autohooksconfig = load_config_from_pyproject_toml(config_path)
-        self.assertTrue(autohooksconfig.has_config())
 
         black_config = get_black_config(autohooksconfig.get_config())
         self.assertEqual(black_config.get_value("foo"), "bar")
