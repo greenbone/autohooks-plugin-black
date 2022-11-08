@@ -16,6 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import subprocess
+from typing import Iterable, List, Union
 
 from autohooks.api import error, ok
 from autohooks.api.git import (
@@ -24,12 +25,14 @@ from autohooks.api.git import (
     stash_unstaged_changes,
 )
 from autohooks.api.path import match
+from autohooks.config import AutohooksConfig
+from autohooks.precommit.run import ReportProgress
 
 DEFAULT_INCLUDE = ("*.py",)
 DEFAULT_ARGUMENTS = ("-q",)
 
 
-def check_black_installed():
+def check_black_installed() -> None:
     try:
         import black  # pylint: disable=unused-import, import-outside-toplevel
     except ImportError:
@@ -39,17 +42,17 @@ def check_black_installed():
         ) from None
 
 
-def get_black_config(config):
+def get_black_config(config: AutohooksConfig) -> AutohooksConfig:
     return config.get("tool", "autohooks", "plugins", "black")
 
 
-def ensure_iterable(value):
+def ensure_iterable(value: Union[str, List[str]]) -> List[str]:
     if isinstance(value, str):
         return [value]
     return value
 
 
-def get_include_from_config(config):
+def get_include_from_config(config: AutohooksConfig) -> Iterable[str]:
     if not config:
         return DEFAULT_INCLUDE
 
@@ -61,7 +64,7 @@ def get_include_from_config(config):
     return include
 
 
-def get_black_arguments(config):
+def get_black_arguments(config: AutohooksConfig) -> Iterable[str]:
     if not config:
         return DEFAULT_ARGUMENTS
 
@@ -74,8 +77,10 @@ def get_black_arguments(config):
 
 
 def precommit(
-    config=None, report_progress=None, **kwargs
-):  # pylint: disable=unused-argument
+    config: AutohooksConfig = None,
+    report_progress: ReportProgress = None,
+    **kwargs,  # pylint: disable=unused-argument
+) -> int:
     check_black_installed()
 
     include = get_include_from_config(config)
