@@ -47,7 +47,7 @@ tests-no-zope = ["cloudpickle", "coverage[toml] (>=5.0.2)", "hypothesis", "mypy 
 
 [[package]]
 name = "autohooks"
-version = "22.8.1"
+version = "22.11.1"
 description = "Library for managing git hooks"
 category = "main"
 optional = false
@@ -563,8 +563,8 @@ attrs = [
     {file = "attrs-22.1.0.tar.gz", hash = "sha256:29adc2665447e5191d0e7c568fde78b21f9672d344281d0c6e1ab085429b22b6"},
 ]
 autohooks = [
-    {file = "autohooks-22.8.1-py3-none-any.whl", hash = "sha256:3343c8f50e00c9f6d3fc5e69f23f938d32dcac9d86bfcf667213c9836e07560b"},
-    {file = "autohooks-22.8.1.tar.gz", hash = "sha256:4e68f8b615e32ea6da4b2576c2cfa459b81ee46ea98eaac80a05d59e0ffaa803"},
+    {file = "autohooks-22.11.1-py3-none-any.whl", hash = "sha256:6ce64207026e5120779321ee6df6789d78eba909df0c1a087f7d09094d392f00"},
+    {file = "autohooks-22.11.1.tar.gz", hash = "sha256:86a88ce410ca132bb4f9a5d265092be8fd90b2e563bcfe3dd420872b2afb9e57"},
 ]
 autohooks-plugin-isort = [
     {file = "autohooks-plugin-isort-22.8.0.tar.gz", hash = "sha256:ed798f3ff9a2046ca7943cc25cbdd13afde2ddf82935cead3d61da4e210d070b"},
