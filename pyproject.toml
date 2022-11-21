@@ -50,7 +50,7 @@ autohooks = ">=21.6.0"
 pytest = "*"
 autohooks-plugin-pylint = ">=21.6.0"
 autohooks-plugin-isort = ">=22.3.0"
-mypy = "^0.990"
+mypy = "^0.991"
 pylint = "^2.13.9"
 pontos = ">=22.5.0"
 
