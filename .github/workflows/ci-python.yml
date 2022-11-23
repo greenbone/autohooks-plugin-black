@@ -41,7 +41,7 @@ jobs:
       - name: Set up Python ${{ matrix.python-version }}
         uses: greenbone/actions/mypy-python@v2
         with:
-          packages: autohooks tests
+          packages: autohooks
           version: ${{ matrix.python-version }}
 
   test:
