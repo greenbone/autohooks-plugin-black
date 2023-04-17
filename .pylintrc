@@ -40,9 +40,16 @@ confidence=
 # --enable=similarities". If you want to run only the classes checker, but have
 # no Warning level messages displayed, use"--disable=all --enable=classes
 # --disable=W"
+
+# bad-continuation is disabled because of a bug in pylint.
+# See https://github.com/ambv/black/issues/48 and https://github.com/PyCQA/pylint/issues/289
+
 disable=len-as-condition,
         attribute-defined-outside-init,
-        missing-docstring
+        missing-docstring,
+        bad-continuation,
+        R
+
 #disable=print-statement,
 #       parameter-unpacking,
 #       unpacking-in-except,
@@ -145,8 +152,8 @@ output-format=text
 # Tells whether to display a full report or only the messages
 reports=no
 
-# Activate the evaluation score.
-score=yes
+# Deactivate the evaluation score.
+score=no
 
 
 [REFACTORING]
@@ -357,13 +364,6 @@ max-line-length=80
 # Maximum number of lines in a module
 max-module-lines=1000
 
-# List of optional constructs for which whitespace checking is disabled. `dict-
-# separator` is used to allow tabulation in dicts, etc.: {1  : 1,\n222: 2}.
-# `trailing-comma` allows a space between comma and closing bracket: (a, ).
-# `empty-line` allows space-only lines.
-no-space-check=trailing-comma,
-               dict-separator
-
 # Allow the body of a class to be on the same line as the declaration if body
 # contains single statement.
 single-line-class-stmt=no
@@ -465,4 +465,4 @@ valid-metaclass-classmethod-first-arg=mcs
 
 # Exceptions that will emit a warning when being caught. Defaults to
 # "Exception"
-overgeneral-exceptions=Exception
+overgeneral-exceptions=builtins.Exception
