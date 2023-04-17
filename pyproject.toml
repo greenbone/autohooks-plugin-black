@@ -45,7 +45,6 @@ black = ">=20.8"
 autohooks = ">=21.6.0"
 
 [tool.poetry.dev-dependencies]
-pytest = "*"
 autohooks-plugin-pylint = ">=21.6.0"
 autohooks-plugin-isort = ">=22.3.0"
 coverage = "^7.2.3"
