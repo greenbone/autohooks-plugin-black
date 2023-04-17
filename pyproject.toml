@@ -28,8 +28,6 @@ classifiers = [
 ]
 packages = [
   { include = "autohooks" },
-  { include = "CHANGELOG.md", format = "sdist"},
-  { include = "RELEASE.md", format = "sdist"},
   { include = "poetry.lock", format = "sdist"},
   { include = "poetry.toml", format = "sdist"},
 ]
