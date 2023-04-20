@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "autohooks-plugin-black"
-version = "22.11.1.dev1"
+version = "23.4.0"
 description = "An autohooks plugin for python code formatting via black"
 license = "GPL-3.0-or-later"
 authors = ["Greenbone AG <info@greenbone.net>"]
