@@ -53,6 +53,21 @@ autohooks = ">=21.6.0"
 isort = ">=5.8.0,<6.0.0"
 
 [[package]]
+name = "autohooks-plugin-mypy"
+version = "23.3.0"
+description = "An autohooks plugin for python code static typing check with mypy"
+optional = false
+python-versions = ">=3.7.2,<4.0.0"
+files = [
+    {file = "autohooks_plugin_mypy-23.3.0-py3-none-any.whl", hash = "sha256:3cd38cf53c2307ff396beb448d098f6631c3af74ab289bb45fc4f0f53f72a18b"},
+    {file = "autohooks_plugin_mypy-23.3.0.tar.gz", hash = "sha256:eb768b1114c1cb54c8cbfe7f520641b70001d3c90ea9337067ce42567ec44f88"},
+]
+
+[package.dependencies]
+autohooks = ">=21.7.0"
+mypy = ">=0.910"
+
+[[package]]
 name = "autohooks-plugin-ruff"
 version = "23.6.1"
 description = "An autohooks plugin for python code formatting via ruff"
@@ -678,4 +693,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8"
-content-hash = "1f3def53b5922f5c2b002b12e44848383cde5da209953ae3fac33e3df902e9cf"
+content-hash = "de20a9aeb705dde265f8362d774c3794f8a57c297448bbef87c69ca19b917ab6"
