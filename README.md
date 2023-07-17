@@ -71,6 +71,6 @@ first.
 
 ## License
 
-Copyright (C) 2019 [Greenbone AG](https://www.greenbone.net/)
+Copyright (C) 2019-2023 [Greenbone AG](https://www.greenbone.net/)
 
 Licensed under the [GNU General Public License v3.0 or later](LICENSE).
