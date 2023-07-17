@@ -34,7 +34,7 @@ DEFAULT_ARGUMENTS = ("-q",)
 
 def check_black_installed() -> None:
     try:
-        import black  # pylint: disable=unused-import, import-outside-toplevel
+        import black  # pylint: disable=unused-import, import-outside-toplevel # noqa: F401,E501
     except ImportError:
         raise RuntimeError(
             "Could not find black. "
