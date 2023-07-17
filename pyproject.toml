@@ -45,6 +45,7 @@ autohooks = ">=21.6.0"
 [tool.poetry.dev-dependencies]
 autohooks-plugin-ruff = ">=23.6.0"
 autohooks-plugin-isort = ">=22.3.0"
+autohooks-plugin-mypy = ">=23.3.0"
 coverage = ">=7.2.7"
 mypy = ">=1.4"
 pontos = ">=22.5.0"
@@ -71,6 +72,7 @@ pre-commit = [
   'autohooks.plugins.isort',
   'autohooks.plugins.black',
   'autohooks.plugins.ruff',
+  'autohooks.plugins.mypy',
 ]
 
 [tool.pontos.version]
