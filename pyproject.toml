@@ -29,7 +29,6 @@ classifiers = [
 packages = [
   { include = "autohooks" },
   { include = "poetry.lock", format = "sdist"},
-  { include = "poetry.toml", format = "sdist"},
 ]
 keywords = [
   "git",
