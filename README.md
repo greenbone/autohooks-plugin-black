@@ -14,10 +14,7 @@ formatting via [black](https://github.com/ambv/black).
 You can install the latest stable release of autohooks-plugin-black from the
 Python Package Index using [pip](https://pip.pypa.io/):
 
-    pip install autohooks-plugin-black
-
-Note the `pip` refers to the Python 3 package manager. In a environment where
-Python 2 is also available the correct command may be `pip3`.
+    python3 -m pip install autohooks-plugin-black
 
 ### Install using poetry
 
