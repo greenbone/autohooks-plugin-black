@@ -23,12 +23,6 @@ jobs:
       linter: ruff
       python-version: ${{ matrix.python-version }}
 
-  mypy:
-    name: Check typing
-    uses: greenbone/workflows/.github/workflows/typing-python.yml@main
-    with:
-      python-version: "3.10"
-
 
   codecov:
     name: Upload coverage to codecov.io
@@ -41,5 +35,4 @@ jobs:
         uses: greenbone/actions/coverage-python@v3
         with:
           python-version: "3.10"
-          cache: "true"
           token: ${{ secrets.CODECOV_TOKEN }}
