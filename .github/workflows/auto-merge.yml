@@ -1,4 +1,4 @@
-name: Auto-merge sqash
+name: Auto-merge squash
 on: pull_request_target
     
 permissions:
