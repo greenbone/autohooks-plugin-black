@@ -11,7 +11,6 @@ authors = ["Greenbone AG <info@greenbone.net>"]
 readme = "README.md"
 homepage = "https://github.com/greenbone/autohooks-plugin-black"
 repository = "https://github.com/greenbone/autohooks-plugin-black"
-documentation = ""
 # Full list: https://pypi.org/pypi?%3Aaction=list_classifiers
 classifiers = [
   "Development Status :: 5 - Production/Stable",
