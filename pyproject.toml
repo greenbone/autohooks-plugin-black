@@ -43,8 +43,6 @@ coverage = ">=7.2.7"
 mypy = ">=1.4"
 pontos = ">=22.5.0"
 
-[tool.poetry.group.dev.dependencies]
-pytest = "^8.4.2"
 
 [tool.black]
 line-length = 80
