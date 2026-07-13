@@ -40,8 +40,8 @@ autohooks = ">=21.6.0"
 autohooks-plugin-ruff = ">=23.6.0"
 autohooks-plugin-isort = ">=22.3.0"
 autohooks-plugin-mypy = ">=23.3.0"
-coverage = ">=7.15.0"
-mypy = ">=1.4"
+coverage = ">=7.15.1"
+mypy = ">=2.2.0"
 pontos = ">=22.5.0"
 
 [tool.black]
