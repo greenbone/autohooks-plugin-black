@@ -40,9 +40,13 @@ def get_test_config_path(name):
 
 
 class AutohooksBlackTestCase(TestCase):
-    def test_xblack_installed(self):
-        sys.modules["black"] = None
-        with self.assertRaises(Exception):
+    def setUp(self):
+        if "black" in sys.modules:
+            del sys.modules["black"]
+
+    def test_black_installed(self):
+        sys.modules["black"] = None  # type: ignore
+        with self.assertRaises(RuntimeError):
             check_black_installed()
 
     def test_get_black_arguments(self):
@@ -59,12 +63,12 @@ class AutohooksBlackTestCase(TestCase):
         self.assertEqual(black_config.get_value("foo"), "bar")
 
     def test_ensure_iterable(self):
-        foo = "bar"  # pylint: disable=blacklisted-name
-        bar = ensure_iterable(foo)  # pylint: disable=blacklisted-name
+        foo = "bar"
+        bar = ensure_iterable(foo)
         self.assertEqual(bar, ["bar"])
 
-        foo = ["bar"]  # pylint: disable=blacklisted-name
-        bar = ensure_iterable(foo)  # pylint: disable=blacklisted-name
+        foo = ["bar"]
+        bar = ensure_iterable(foo)
         self.assertEqual(bar, ["bar"])
 
     def test_get_include_from_config(self):
