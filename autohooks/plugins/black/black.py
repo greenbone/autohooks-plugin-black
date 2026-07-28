@@ -16,7 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import subprocess
-from typing import Iterable, List, Optional, Union
+from collections.abc import Iterable
 
 from autohooks.api import error, ok
 from autohooks.api.git import (
@@ -34,11 +34,10 @@ DEFAULT_ARGUMENTS = ("-q",)
 
 def check_black_installed() -> None:
     try:
-        import black  # pylint: disable=unused-import, import-outside-toplevel # noqa: F401,E501
+        import black  # noqa: F401
     except ImportError:
         raise RuntimeError(
-            "Could not find black. "
-            "Please add black to your python environment."
+            "Could not find black. Please add black to your python environment."
         ) from None
 
 
@@ -46,13 +45,13 @@ def get_black_config(config: Config) -> Config:
     return config.get("tool", "autohooks", "plugins", "black")
 
 
-def ensure_iterable(value: Union[str, List[str]]) -> List[str]:
+def ensure_iterable(value: str | list[str]) -> list[str]:
     if isinstance(value, str):
         return [value]
     return value
 
 
-def get_include_from_config(config: Optional[Config]) -> Iterable[str]:
+def get_include_from_config(config: Config | None) -> Iterable[str]:
     if not config:
         return DEFAULT_INCLUDE
 
@@ -64,7 +63,7 @@ def get_include_from_config(config: Optional[Config]) -> Iterable[str]:
     return include
 
 
-def get_black_arguments(config: Optional[Config]) -> Iterable[str]:
+def get_black_arguments(config: Config | None) -> Iterable[str]:
     if not config:
         return DEFAULT_ARGUMENTS
 
@@ -77,9 +76,9 @@ def get_black_arguments(config: Optional[Config]) -> Iterable[str]:
 
 
 def precommit(
-    config: Optional[Config] = None,
-    report_progress: Optional[ReportProgress] = None,
-    **kwargs,  # pylint: disable=unused-argument
+    config: Config | None = None,
+    report_progress: ReportProgress | None = None,
+    **kwargs,
 ) -> int:
     check_black_installed()
 
@@ -103,11 +102,11 @@ def precommit(
                 args.append(str(f.absolute_path()))
 
                 subprocess.check_call(args)
-                ok(f"Running black on {str(f.path)}")
+                ok(f"Running black on {f.path!s}")
                 if report_progress:
                     report_progress.update()
             except subprocess.CalledProcessError as e:
-                error(f"Running black on {str(f.path)}")
+                error(f"Running black on {f.path!s}")
                 raise e from None
 
         stage_files_from_status_list(files)

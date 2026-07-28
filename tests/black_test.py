@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Copyright (C) 2022 Greenbone AG
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
@@ -20,11 +19,10 @@
 
 import sys
 
-# pylint: disable-all
-from io import BytesIO, FileIO, StringIO  # pylint: disable=unused-import
+from io import BytesIO, FileIO, StringIO
 
 cmd = ["pylint", "autohooks/plugins/pylint/pylint.py"]
-import subprocess  # pylint: disable=
+import subprocess
 
 # status = subprocess.call(cmd)
 iofile = "tmp.txt"
